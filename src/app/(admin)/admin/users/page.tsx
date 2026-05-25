@@ -19,7 +19,8 @@ async function changeUserRole(formData: FormData) {
   const targetUser: any = { clerk_user_id: "mock_id" };
   if (!targetUser) throw new Error("User not found");
 
-  await clerkClient().users.updateUserMetadata(targetUser.clerk_user_id, {
+  const client = await clerkClient();
+  await client.users.updateUserMetadata(targetUser.clerk_user_id, {
     publicMetadata: { role: newRole }
   });
 
