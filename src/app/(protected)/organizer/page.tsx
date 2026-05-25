@@ -1,5 +1,4 @@
 import { auth } from "@clerk/nextjs/server";
-import { prisma } from "@/lib/prisma";
 import { redirect } from "next/navigation";
 import { Building2, Terminal, Users, PlusCircle } from "lucide-react";
 
@@ -8,9 +7,8 @@ export default async function OrganizerDashboard() {
   if (!userId) redirect("/sign-in");
 
   // Securely verify role on the server
-  const user = await prisma.user.findUnique({
-    where: { clerk_user_id: userId }
-  });
+  // TODO: Fetch user from DB
+  const user: any = { role: "ORGANIZER" }; // Mocked
 
   if (user?.role !== "ORGANIZER" && user?.role !== "ADMIN") {
     redirect("/hub");

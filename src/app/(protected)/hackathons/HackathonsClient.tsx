@@ -2,7 +2,6 @@
 
 import React, { useState, useRef, MouseEvent } from 'react';
 import { Search, Trophy, Calendar, Users, Terminal, ArrowRight, Zap, Sparkles, Star } from 'lucide-react';
-import type { Hackathon } from '@prisma/client';
 
 // --- Spotlight Card Component ---
 interface SpotlightCardProps {
@@ -47,7 +46,7 @@ function SpotlightCard({ children, className = "", isFeatured = false }: Spotlig
   );
 }
 
-export default function HackathonsClient({ initialHackathons }: { initialHackathons: Hackathon[] }) {
+export default function HackathonsClient({ initialHackathons }: { initialHackathons: any[] }) {
   const [activeTab, setActiveTab] = useState<'Active' | 'Upcoming' | 'Past'>('Active');
   const [searchQuery, setSearchQuery] = useState('');
 

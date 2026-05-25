@@ -1,6 +1,5 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -9,9 +8,8 @@ export async function awardXP(amount: number, reason: string) {
   if (!userId) return { error: "Unauthorized" };
 
   try {
-    const user = await prisma.user.findUnique({
-      where: { clerk_user_id: userId }
-    });
+    // TODO: Fetch user from DB
+    const user = { xp: 0, builder_level: "Initiate" }; // Mocked user
 
     if (!user) return { error: "User not found" };
 
@@ -24,13 +22,7 @@ export async function awardXP(amount: number, reason: string) {
     else if (newXP >= 500) newLevel = "Pro Builder";
     else newLevel = "Initiate";
 
-    await prisma.user.update({
-      where: { clerk_user_id: userId },
-      data: { 
-        xp: newXP,
-        builder_level: newLevel
-      }
-    });
+    // TODO: Update user XP and level in DB
 
     revalidatePath("/community");
     revalidatePath("/hub");

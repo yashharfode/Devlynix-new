@@ -1,4 +1,3 @@
-import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { Trophy, Medal, Star, Zap, Users } from "lucide-react";
@@ -8,21 +7,8 @@ export default async function CommunityLeaderboardPage() {
   if (!userId) redirect("/sign-in");
 
   // Fetch top 50 users ranked by XP
-  const topUsers = await prisma.user.findMany({
-    take: 50,
-    orderBy: [
-      { xp: "desc" },
-      { streak_days: "desc" }
-    ],
-    select: {
-      id: true,
-      username: true,
-      builder_level: true,
-      xp: true,
-      streak_days: true,
-      clerk_user_id: true,
-    }
-  });
+  // TODO: Fetch users from DB
+  const topUsers: any[] = [];
 
   return (
     <div className="max-w-4xl mx-auto pb-24">

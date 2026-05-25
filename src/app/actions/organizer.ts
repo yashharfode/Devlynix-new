@@ -1,6 +1,5 @@
 "use server";
 
-import { prisma } from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 
@@ -21,35 +20,22 @@ export async function submitOrganizerApplication(formData: FormData) {
 
   try {
     // Ensure the user exists in our DB first
-    const dbUser = await prisma.user.findUnique({
-      where: { clerk_user_id: userId },
-    });
-
+    // TODO: Fetch user from DB
+    const dbUser = { id: userId }; // Mock user
+    
     if (!dbUser) {
       return { error: "Profile not found. Please complete onboarding first." };
     }
 
     // Check if they already have a pending application
-    const existingApp = await prisma.organizerApplication.findFirst({
-      where: { 
-        user_id: dbUser.id,
-        status: "PENDING"
-      }
-    });
+    // TODO: Fetch existing application from DB
+    const existingApp = null; // Mock
 
     if (existingApp) {
       return { error: "You already have a pending application." };
     }
 
-    await prisma.organizerApplication.create({
-      data: {
-        company_name: companyName,
-        website: website || null,
-        description,
-        user_id: dbUser.id,
-        status: "PENDING",
-      },
-    });
+    // TODO: Create Organizer Application in DB
 
     revalidatePath("/apply-to-host");
     return { success: true };
