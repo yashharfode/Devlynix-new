@@ -197,7 +197,7 @@ export default function HackathonsClient({ initialHackathons }: { initialHackath
 
                     <div className="flex items-center justify-between mt-auto">
                       <div className="flex flex-wrap gap-2">
-                        {hackathon.tags.map(tag => (
+                        {hackathon.tags.map((tag: string) => (
                           <span key={tag} className="px-2 py-1 bg-[#111] border border-white/10 rounded-md text-xs text-gray-400 font-mono">
                             {tag}
                           </span>
