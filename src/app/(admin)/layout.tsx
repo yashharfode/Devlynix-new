@@ -88,7 +88,7 @@ export default function AdminLayout({
             <span className="text-sm">Exit to Hub</span>
           </Link>
           <div className="flex items-center gap-3 bg-[#111] p-3 rounded-xl border border-white/5">
-            <UserButton afterSignOutUrl="/sign-in" />
+            <UserButton />
             <div className="flex flex-col min-w-0">
               <span className="text-sm font-medium text-white truncate">{user?.firstName || 'Admin'}</span>
               <span className="text-xs text-gray-500 font-mono">System Administrator</span>
