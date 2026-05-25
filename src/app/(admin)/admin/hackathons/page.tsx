@@ -78,7 +78,7 @@ export default async function AdminHackathonsPage() {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 rounded text-[10px] font-mono tracking-wider ${
-                      h.approval_status === 'APPROVED' ? 'bg-emerald-900/20 text-emerald-500' :
+                      h.approval_status === 'APPROVED' ? 'bg-[#c6ff00]/10 text-[#c6ff00]' :
                       h.approval_status === 'PENDING' ? 'bg-amber-900/20 text-amber-500' :
                       'bg-red-900/20 text-red-500'
                     }`}>
@@ -90,9 +90,9 @@ export default async function AdminHackathonsPage() {
                       <input type="hidden" name="hackathonId" value={h.id} />
                       <input type="hidden" name="currentFeatured" value={h.is_featured.toString()} />
                       <button type="submit" className={`p-1.5 rounded-lg transition-colors ${
-                        h.is_featured ? 'text-emerald-400 bg-emerald-900/20 hover:bg-emerald-900/40' : 'text-gray-600 hover:bg-[#111] hover:text-gray-400'
+                        h.is_featured ? 'text-[#c6ff00] bg-[#c6ff00]/10 hover:bg-[#c6ff00]/20' : 'text-gray-600 hover:bg-[#111] hover:text-gray-400'
                       }`}>
-                        <Star className={`w-4 h-4 ${h.is_featured ? 'fill-emerald-400' : ''}`} />
+                        <Star className={`w-4 h-4 ${h.is_featured ? 'fill-[#c6ff00]' : ''}`} />
                       </button>
                     </form>
                   </td>
@@ -102,7 +102,7 @@ export default async function AdminHackathonsPage() {
                       <select 
                         name="status" 
                         defaultValue={h.approval_status}
-                        className="bg-[#111] border border-white/5 text-xs rounded-md px-2 py-1 text-gray-300 focus:outline-none focus:border-emerald-500"
+                        className="bg-[#111] border border-white/5 text-xs rounded-md px-2 py-1 text-gray-300 focus:outline-none focus:border-[#c6ff00]/50"
                         onChange={(e) => e.target.form?.requestSubmit()}
                       >
                         <option value="PENDING">PENDING</option>

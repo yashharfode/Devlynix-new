@@ -45,7 +45,7 @@ export default function AdminLayout({
       {/* Mobile Header */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 border-b border-white/5 bg-[#030303]/90 backdrop-blur-xl z-50 flex items-center justify-between px-4">
         <div className="flex items-center gap-2">
-          <ShieldAlert className="w-6 h-6 text-emerald-700" />
+          <ShieldAlert className="w-6 h-6 text-[#c6ff00]" />
           <span className="font-bold text-white tracking-tight">Admin Console</span>
         </div>
         <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-gray-500 hover:text-white">
@@ -59,7 +59,7 @@ export default function AdminLayout({
         ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0
       `}>
         <div className="hidden md:flex h-20 items-center gap-3 px-6">
-          <ShieldAlert className="w-6 h-6 text-emerald-700" />
+          <ShieldAlert className="w-6 h-6 text-[#c6ff00]" />
           <span className="text-xl font-bold tracking-tight text-white">Admin Console</span>
         </div>
 
@@ -71,7 +71,7 @@ export default function AdminLayout({
               <Link key={item.name} href={item.href} onClick={() => setMobileMenuOpen(false)}>
                 <div className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-colors ${
                   isActive 
-                    ? 'bg-emerald-900/20 text-emerald-500 font-medium border border-emerald-900/30' 
+                    ? 'bg-[#c6ff00]/10 text-[#c6ff00] font-medium border border-[#c6ff00]/20 shadow-[0_0_15px_rgba(198,255,0,0.05)]' 
                     : 'text-gray-500 hover:bg-[#111] hover:text-gray-300 border border-transparent'
                 }`}>
                   <item.icon className="w-4 h-4" />

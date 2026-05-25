@@ -49,7 +49,7 @@ export default async function AdminUsersPage() {
           <input 
             type="text" 
             placeholder="Search builders..." 
-            className="bg-[#0A0A0A] border border-[#111] text-white text-sm rounded-xl pl-9 pr-4 py-2 focus:outline-none focus:border-emerald-900/50"
+            className="bg-[#0A0A0A] border border-[#111] text-white text-sm rounded-xl pl-9 pr-4 py-2 focus:outline-none focus:border-[#c6ff00]/50"
           />
         </div>
       </div>
@@ -82,14 +82,14 @@ export default async function AdminUsersPage() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span className={`px-2 py-1 rounded text-[10px] font-mono tracking-wider ${
                       user.role === 'ADMIN' ? 'bg-red-900/20 text-red-500' :
-                      user.role === 'ORGANIZER' ? 'bg-blue-900/20 text-blue-500' :
+                      user.role === 'ORGANIZER' ? 'bg-[#c6ff00]/10 text-[#c6ff00]' :
                       'bg-[#111] text-gray-500'
                     }`}>
                       {user.role}
                     </span>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right">
-                    <div className="text-emerald-500 font-mono font-bold">{user.xp.toLocaleString()} XP</div>
+                    <div className="text-[#c6ff00] font-mono font-bold">{user.xp.toLocaleString()} XP</div>
                     <div className="text-xs text-gray-500">{user.builder_level}</div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right">
@@ -98,7 +98,7 @@ export default async function AdminUsersPage() {
                       <select 
                         name="role" 
                         defaultValue={user.role}
-                        className="bg-[#111] border border-white/5 text-xs rounded-md px-2 py-1 text-gray-300 focus:outline-none focus:border-emerald-500"
+                        className="bg-[#111] border border-white/5 text-xs rounded-md px-2 py-1 text-gray-300 focus:outline-none focus:border-[#c6ff00]/50"
                         onChange={(e) => e.target.form?.requestSubmit()}
                       >
                         <option value="HACKER">HACKER</option>
