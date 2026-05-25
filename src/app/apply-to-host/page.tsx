@@ -214,7 +214,8 @@ export default function HostHackathonWizard() {
 
                         <div>
                           <label className="block text-xs font-bold text-gray-400 uppercase tracking-wider mb-2">Tagline</label>
-                          <input {...form.register("tagline")} className="w-full bg-[#111] border border-white/10 rounded-xl px-4 py-3 text-white focus:border-[#c6ff00]/50" placeholder="Code the future." />
+                          <input {...form.register("tagline")} className={`w-full bg-[#111] border ${errors.tagline ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:border-[#c6ff00]/50`} placeholder="Code the future. (min 10 chars)" />
+                          {errors.tagline && <p className="text-red-400 text-xs mt-1">{errors.tagline.message}</p>}
                         </div>
 
                         <div>
@@ -445,6 +446,15 @@ export default function HostHackathonWizard() {
                 </motion.div>
               </AnimatePresence>
             </div>
+
+            {/* Error Message if Validation Fails */}
+            {Object.keys(errors).length > 0 && (
+              <div className="px-8 pb-4">
+                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-400 text-sm font-bold flex items-center gap-2">
+                  <ShieldAlert className="w-4 h-4" /> Please fill out all required fields correctly to proceed. Check for minimum lengths or invalid formats.
+                </div>
+              </div>
+            )}
 
             {/* Bottom Navigation */}
             <div className="pt-6 border-t border-white/5 flex justify-between items-center relative z-20 bg-[#0A0A0A]">
